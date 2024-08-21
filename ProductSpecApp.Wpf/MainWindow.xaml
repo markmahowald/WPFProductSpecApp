@@ -1,0 +1,43 @@
+﻿<Window x:Class="ProductSpecApp.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductSpecApp.Wpf"
+        xmlns:vm="clr-namespace:ProductSpecApp.Wpf.ViewModels.DisplayViewModels"
+        xmlns:vw="clr-namespace:ProductSpecApp.Wpf.Views.MainWindowUserControls"
+        mc:Ignorable="d"
+        Title="Product Specification App" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:ProductDisplayViewModel}">
+            <vw:ProductDisplayView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MaterialDisplayViewModel}">
+            <vw:MaterialDisplayView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MoldDisplayViewModel}">
+            <vw:MoldDisplayView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ClientDisplayViewModel}">
+            <vw:ClientDisplayView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:BrandingDisplayViewModel}">
+            <vw:BrandingDisplayView />
+        </DataTemplate>
+        <!-- Repeat for other DisplayViewModels -->
+    </Window.Resources>
+
+    <DockPanel>
+        <!-- Sidebar with Buttons -->
+        <StackPanel DockPanel.Dock="Left" Width="150" Background="LightGray">
+            <Button Content="Products" Command="{Binding ShowProductsCommand}" Margin="5"/>
+            <Button Content="Materials" Command="{Binding ShowMaterialsCommand}" Margin="5"/>
+            <Button Content="Molds" Command="{Binding ShowMoldsCommand}" Margin="5"/>
+            <Button Content="Clients" Command="{Binding ShowClientsCommand}" Margin="5"/>
+            <Button Content="Branding" Command="{Binding ShowBrandingCommand}" Margin="5"/>
+        </StackPanel>
+
+        <!-- Main Content Area for Data Grid -->
+        <ContentControl Content="{Binding SelectedViewModel}" />
+    </DockPanel>
+</Window>

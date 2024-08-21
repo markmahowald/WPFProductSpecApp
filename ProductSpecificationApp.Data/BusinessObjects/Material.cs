@@ -10,7 +10,7 @@ namespace ProductSpecificationApp.Data.BusinessObjects
     {
         public ProductSpecificationDbContext Context { get; }
 
-        private TblMaterial tblMaterial;
+        public TblMaterial tblMaterial;
 
         private int materialId;
         public int MaterialId
@@ -100,6 +100,10 @@ namespace ProductSpecificationApp.Data.BusinessObjects
             }
         }
 
+        public Material()
+        {
+                
+        }
         public Material(TblMaterial tblMaterial, ProductSpecificationDbContext context)
         {
             this.Context = context;

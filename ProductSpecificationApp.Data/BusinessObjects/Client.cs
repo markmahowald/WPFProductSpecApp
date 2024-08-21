@@ -10,7 +10,7 @@ namespace ProductSpecificationApp.Data.BusinessObjects
     {
         public ProductSpecificationDbContext Context { get; }
 
-        private TblClient tblClient;
+        public  TblClient tblClient;
 
         private int clientId;
         public int ClientId

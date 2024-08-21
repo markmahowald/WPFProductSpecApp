@@ -13,7 +13,7 @@ namespace ProductSpecificationApp.Data.BusinessObjects
     {
         public ProductSpecificationDbContext Context { get; }
 
-        private TblProduct TblProduct;
+        public TblProduct TblProduct;
 
         private int productId;
         public int ProductId

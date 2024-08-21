@@ -12,7 +12,7 @@ namespace ProductSpecificationApp.Data.BusinessObjects
     {
         public ProductSpecificationDbContext Context { get; }
 
-        private TblBranding tblBranding;
+        public TblBranding tblBranding;
         private int brandingId;
         public int BrandingId
         {
