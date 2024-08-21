@@ -142,6 +142,10 @@ Usage
     
 *   **Saving Changes**: Save changes to refresh the UI automatically using the messaging system.
     
-*   Contributing: Contributions are welcome! Please fork the repository, make your changes, and create a pull request. Ensure that your code adheres to the existing style and includes appropriate tests.
-    
-*   License: This project is licensed under the MIT License. See the LICENSE file for details
+Contributing: 
+------------ 
+Contributions are welcome! Please fork the repository, make your changes, and create a pull request. Ensure that your code adheres to the existing style and includes appropriate tests.
+
+License: 
+------------
+This project is licensed under the MIT License. See the LICENSE file for details
