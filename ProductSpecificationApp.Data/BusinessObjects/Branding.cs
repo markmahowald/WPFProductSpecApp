@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace ProductSpecificationApp.Data.BusinessObjects
 {
-    public class Branding : BusinessObject
+    public class Branding : BusinessObject, ICloneable
     {
         public ProductSpecificationDbContext Context { get; }
 
         public TblBranding tblBranding;
+
         private int brandingId;
         public int BrandingId
         {
@@ -123,6 +124,23 @@ namespace ProductSpecificationApp.Data.BusinessObjects
         public bool SaveDbObject()
         {
             return Save(Context, tblBranding);
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public void CopyFrom(Branding source)
+        {
+            if (source == null) return;
+
+            BrandingId = source.BrandingId;
+            Name = source.Name;
+            Description = source.Description;
+            Type = source.Type;
+            UpdateDate = source.UpdateDate;
+            tblBranding = source.tblBranding;
         }
 
     }

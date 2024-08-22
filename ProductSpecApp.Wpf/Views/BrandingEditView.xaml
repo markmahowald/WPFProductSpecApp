@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProductSpecApp.Wpf.Views"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="Edit Branding" Height="350" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Edit Branding" Height="400" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -21,19 +22,45 @@
 
         <!-- Name -->
         <Label Content="Name:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
-        <TextBox Text="{Binding FocusedBranding.Name, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" Width="250"/>
+        <TextBox Text="{Binding FocusedBranding.Name, Mode=TwoWay}"
+                 Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" Width="250">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding FocusChangedCommand}" CommandParameter="Name"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
 
         <!-- Description -->
         <Label Content="Description:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
-        <TextBox Text="{Binding FocusedBranding.Description, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Width="250" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+        <TextBox Text="{Binding FocusedBranding.Description, Mode=TwoWay}"
+                 Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Width="250" Height="60"
+                 TextWrapping="Wrap" AcceptsReturn="True">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding FocusChangedCommand}" CommandParameter="Description"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
 
         <!-- Type -->
         <Label Content="Type:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
-        <TextBox Text="{Binding FocusedBranding.Type, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" Width="250"/>
+        <TextBox Text="{Binding FocusedBranding.Type, Mode=TwoWay}"
+                 Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" Width="250">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding FocusChangedCommand}" CommandParameter="Type"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
 
         <!-- Save Button -->
-        <Button Content="Save" Command="{Binding SaveCommand}" Grid.Row="3" Grid.Column="1" Width="100" Height="20" HorizontalAlignment="Right"/>
+        <Button Content="Save" Command="{Binding SaveCommand}" Grid.Row="3" Grid.Column="1" Width="100" Height="20" HorizontalAlignment="Right" Margin="0, 10, 0, 0"/>
+
+        <!-- Undo and Redo Buttons -->
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right">
+            <Button Content="Undo" Command="{Binding UndoCommand}" Width="100" Height="20" Margin="0, 10, 10, 0"/>
+            <Button Content="Redo" Command="{Binding RedoCommand}" Width="100" Height="20" Margin="0, 10, 0, 0"/>
+        </StackPanel>
     </Grid>
 </Window>
-
-    
